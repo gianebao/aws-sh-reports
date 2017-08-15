@@ -6,6 +6,7 @@ JSONDECODE='$d = json_decode('"$PHPD"');'
 function main() {
   m=`aws logs describe-log-streams --log-group-name $1`
   p='$d = $d->logStreams;
+ date_default_timezone_set("Asia/Singapore");
  foreach ($d as $i) echo implode(",", [
   $i->logStreamName,
   $i->storedBytes,
