@@ -9,7 +9,7 @@ if len(sys.argv) < 2:
 flowlogName = sys.argv[1]
 
 timeformat = "%Y-%m-%dT%H:%M:%S"
-title = ['ReservationId', 'InstanceId', 'NetworkInterfaceId', 'InstanceType', 'LaunchTime', 'NetworkLogStoredBytes', 'NetworkLastIngestionTime', 'NetworkLastEventTimestamp', 'NetworkFirstEventTimestamp', 'NetworkLogCreationTime', 'Tags']
+title = ['ReservationId', 'InstanceId', 'NetworkInterfaceId', 'InstanceType', 'StateName', 'LaunchTime', 'NetworkLogStoredBytes', 'NetworkLastIngestionTime', 'NetworkLastEventTimestamp', 'NetworkFirstEventTimestamp', 'NetworkLogCreationTime', 'Tags']
 csv = []
 
 logs = boto3.client('logs')
