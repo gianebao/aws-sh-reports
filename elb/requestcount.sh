@@ -25,6 +25,7 @@ foreach ($d as $i) {
 }
 echo implode("\n", $all);'
 
+ echo "dimensions,amount,unit,time"
  echo "$m" | php -r "$JSONDECODE""$p"
 }
 
