@@ -10,6 +10,7 @@ flowlogName = sys.argv[1]
 
 timeformat = "%Y-%m-%dT%H:%M:%S"
 title = ['ReservationId', 'InstanceId', 'NetworkInterfaceId', 'InstanceType', 'StateName', 'LaunchTime', 'NetworkLogStoredBytes', 'NetworkLastIngestionTime', 'NetworkLastEventTimestamp', 'NetworkFirstEventTimestamp', 'NetworkLogCreationTime', 'Tags']
+acceptedtags = ['Name', 'Client', 'Stage', 'Requester']
 csv = []
 
 logs = boto3.client('logs')
@@ -47,7 +48,8 @@ for i, reservation in enumerate(response['Reservations']):
         tags = []
 
         for k, tag in enumerate(instance['Tags']):
-            tags.append("%s:%s" % (tag['Key'], tag['Value']))
+            if tag['Key'] in acceptedtags:
+                tags.append("%s:%s" % (tag['Key'], tag['Value']))
 
         for l, networkinterface in enumerate(instance['NetworkInterfaces']):
             networkInterfaceId = networkinterface['NetworkInterfaceId']
